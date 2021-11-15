@@ -41,10 +41,16 @@ public class AdressenverwaltungView extends javax.swing.JFrame
     pmFile = new javax.swing.JPopupMenu();
     pmSave = new javax.swing.JMenuItem();
     pmOpen = new javax.swing.JMenuItem();
+    pmUndo = new javax.swing.JMenuItem();
+    pmDelete = new javax.swing.JMenuItem();
+    pmAdd = new javax.swing.JMenuItem();
     fcDatei = new javax.swing.JFileChooser();
     iconToolbar = new javax.swing.JToolBar();
     btnOpen = new javax.swing.JButton();
     btnSave = new javax.swing.JButton();
+    btnUndo = new javax.swing.JButton();
+    btnDelete = new javax.swing.JButton();
+    btnAdd = new javax.swing.JButton();
     lblStatus = new javax.swing.JLabel();
     tbleScroller = new javax.swing.JScrollPane();
     tbleAdressenverwaltung = new javax.swing.JTable();
@@ -52,12 +58,14 @@ public class AdressenverwaltungView extends javax.swing.JFrame
     mnuFile = new javax.swing.JMenu();
     mnuOpen = new javax.swing.JMenuItem();
     mnuSave = new javax.swing.JMenuItem();
+    mnuUndo = new javax.swing.JMenuItem();
+    mnuDelete = new javax.swing.JMenuItem();
+    mnuAdd = new javax.swing.JMenuItem();
     mnuEdit = new javax.swing.JMenu();
 
     pmSave.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_DOWN_MASK));
     pmSave.setText("Save");
     pmSave.setToolTipText("");
-    pmSave.setActionCommand("Save");
     pmSave.addActionListener(new java.awt.event.ActionListener()
     {
       public void actionPerformed(java.awt.event.ActionEvent evt)
@@ -70,6 +78,25 @@ public class AdressenverwaltungView extends javax.swing.JFrame
     pmOpen.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_O, java.awt.event.InputEvent.CTRL_DOWN_MASK));
     pmOpen.setText("Open");
     pmFile.add(pmOpen);
+
+    pmUndo.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Z, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+    pmUndo.setText("Undo");
+    pmUndo.addActionListener(new java.awt.event.ActionListener()
+    {
+      public void actionPerformed(java.awt.event.ActionEvent evt)
+      {
+        pmUndoActionPerformed(evt);
+      }
+    });
+    pmFile.add(pmUndo);
+
+    pmDelete.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_DELETE, 0));
+    pmDelete.setText("Delete");
+    pmFile.add(pmDelete);
+
+    pmAdd.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_PLUS, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+    pmAdd.setText("AddColumn");
+    pmFile.add(pmAdd);
 
     fcDatei.addActionListener(new java.awt.event.ActionListener()
     {
@@ -105,6 +132,27 @@ public class AdressenverwaltungView extends javax.swing.JFrame
     btnSave.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
     iconToolbar.add(btnSave);
 
+    btnUndo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/adressenverwaltung/view/icons/Undo24.gif"))); // NOI18N
+    btnUndo.setToolTipText("Undo");
+    btnUndo.setFocusable(false);
+    btnUndo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+    btnUndo.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+    iconToolbar.add(btnUndo);
+
+    btnDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/adressenverwaltung/view/icons/Delete24.gif"))); // NOI18N
+    btnDelete.setToolTipText("Delete");
+    btnDelete.setFocusable(false);
+    btnDelete.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+    btnDelete.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+    iconToolbar.add(btnDelete);
+
+    btnAdd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/adressenverwaltung/view/icons/Add24.gif"))); // NOI18N
+    btnAdd.setToolTipText("Add Column");
+    btnAdd.setFocusable(false);
+    btnAdd.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+    btnAdd.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+    iconToolbar.add(btnAdd);
+
     getContentPane().add(iconToolbar, java.awt.BorderLayout.PAGE_START);
 
     lblStatus.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
@@ -114,16 +162,16 @@ public class AdressenverwaltungView extends javax.swing.JFrame
     tbleAdressenverwaltung.setModel(new javax.swing.table.DefaultTableModel(
       new Object [][]
       {
-        {null, null, null, null},
-        {null, null, null, null},
-        {null, null, null, null},
-        {null, null, null, null},
-        {null, null, null, null},
-        {null, null, null, null}
+        {null, null},
+        {null, null},
+        {null, null},
+        {null, null},
+        {null, null},
+        {null, null}
       },
       new String []
       {
-        "Name", "Adresse", "Telefon", "E-mail"
+        "Name", "Telefon"
       }
     ));
     tbleAdressenverwaltung.setComponentPopupMenu(pmFile);
@@ -152,6 +200,21 @@ public class AdressenverwaltungView extends javax.swing.JFrame
     mnuSave.setText("Save");
     mnuSave.setToolTipText("");
     mnuFile.add(mnuSave);
+
+    mnuUndo.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Z, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+    mnuUndo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/adressenverwaltung/view/icons/Undo24.gif"))); // NOI18N
+    mnuUndo.setText("Undo");
+    mnuFile.add(mnuUndo);
+
+    mnuDelete.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_DELETE, 0));
+    mnuDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/adressenverwaltung/view/icons/Delete24.gif"))); // NOI18N
+    mnuDelete.setText("Delete");
+    mnuFile.add(mnuDelete);
+
+    mnuAdd.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_PLUS, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+    mnuAdd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/adressenverwaltung/view/icons/Add24.gif"))); // NOI18N
+    mnuAdd.setText("Add Column");
+    mnuFile.add(mnuAdd);
 
     mnuBar.add(mnuFile);
 
@@ -184,6 +247,11 @@ public class AdressenverwaltungView extends javax.swing.JFrame
   {//GEN-HEADEREND:event_pmSaveActionPerformed
     // TODO add your handling code here:
   }//GEN-LAST:event_pmSaveActionPerformed
+
+  private void pmUndoActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_pmUndoActionPerformed
+  {//GEN-HEADEREND:event_pmUndoActionPerformed
+    // TODO add your handling code here:
+  }//GEN-LAST:event_pmUndoActionPerformed
 
   /**
    * @param args the command line arguments
@@ -236,19 +304,28 @@ public class AdressenverwaltungView extends javax.swing.JFrame
   }
 
   // Variables declaration - do not modify//GEN-BEGIN:variables
+  private javax.swing.JButton btnAdd;
+  private javax.swing.JButton btnDelete;
   private javax.swing.JButton btnOpen;
   private javax.swing.JButton btnSave;
+  private javax.swing.JButton btnUndo;
   private javax.swing.JFileChooser fcDatei;
   private javax.swing.JToolBar iconToolbar;
   private javax.swing.JLabel lblStatus;
+  private javax.swing.JMenuItem mnuAdd;
   private javax.swing.JMenuBar mnuBar;
+  private javax.swing.JMenuItem mnuDelete;
   private javax.swing.JMenu mnuEdit;
   private javax.swing.JMenu mnuFile;
   private javax.swing.JMenuItem mnuOpen;
   private javax.swing.JMenuItem mnuSave;
+  private javax.swing.JMenuItem mnuUndo;
+  private javax.swing.JMenuItem pmAdd;
+  private javax.swing.JMenuItem pmDelete;
   private javax.swing.JPopupMenu pmFile;
   private javax.swing.JMenuItem pmOpen;
   private javax.swing.JMenuItem pmSave;
+  private javax.swing.JMenuItem pmUndo;
   private javax.swing.JTable tbleAdressenverwaltung;
   private javax.swing.JScrollPane tbleScroller;
   // End of variables declaration//GEN-END:variables
@@ -357,5 +434,77 @@ public class AdressenverwaltungView extends javax.swing.JFrame
   public javax.swing.JMenuItem getPmSave()
   {
     return pmSave;
+  }
+
+  /**
+   * @return the btnUndo
+   */
+  public javax.swing.JButton getBtnUndo()
+  {
+    return btnUndo;
+  }
+
+  /**
+   * @return the mnuUndo
+   */
+  public javax.swing.JMenuItem getMnuUndo()
+  {
+    return mnuUndo;
+  }
+
+  /**
+   * @return the pmUndo
+   */
+  public javax.swing.JMenuItem getPmUndo()
+  {
+    return pmUndo;
+  }
+
+  /**
+   * @return the btnDelete
+   */
+  public javax.swing.JButton getBtnDelete()
+  {
+    return btnDelete;
+  }
+
+  /**
+   * @return the mnuDelete
+   */
+  public javax.swing.JMenuItem getMnuDelete()
+  {
+    return mnuDelete;
+  }
+
+  /**
+   * @return the pmDelete
+   */
+  public javax.swing.JMenuItem getPmDelete()
+  {
+    return pmDelete;
+  }
+
+  /**
+   * @return the btnAdd
+   */
+  public javax.swing.JButton getBtnAdd()
+  {
+    return btnAdd;
+  }
+
+  /**
+   * @return the mnuAdd
+   */
+  public javax.swing.JMenuItem getMnuAdd()
+  {
+    return mnuAdd;
+  }
+
+  /**
+   * @return the pmAdd
+   */
+  public javax.swing.JMenuItem getPmAdd()
+  {
+    return pmAdd;
   }
 }

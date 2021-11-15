@@ -36,12 +36,15 @@ public class CommandSave implements CommandInterface
   @Override
   public void execute()
   {
-    
+    view.getFcDatei().setCurrentDirectory(new File(model.getLastFolder()));
     JFileChooser fc = view.getFcDatei();
     int choice = fc.showSaveDialog(view);
     if (choice == JFileChooser.APPROVE_OPTION)
     {     
       File datei = view.getFcDatei().getSelectedFile();
+      String dateiname = datei.getAbsolutePath();
+      view.getLblStatus().setText("File:" + dateiname);
+      model.setLastFolder(datei.getParent());
       
       try
       {

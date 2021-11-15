@@ -6,6 +6,8 @@
 
 package adressenverwaltung.controller;
 
+import adressenverwaltung.controller.commands.CommandAdd;
+import adressenverwaltung.controller.commands.CommandDelete;
 import adressenverwaltung.controller.commands.CommandInvoker;
 import adressenverwaltung.controller.commands.CommandOpen;
 import adressenverwaltung.controller.commands.CommandSave;
@@ -40,12 +42,22 @@ public class CommandController implements ActionListener
     view.getBtnSave().addActionListener(this);
     view.getMnuSave().addActionListener(this);
     view.getPmSave().addActionListener(this);
+    
+    view.getBtnDelete().addActionListener(this);
+    view.getMnuDelete().addActionListener(this);
+    view.getPmDelete().addActionListener(this);
+    
+    view.getBtnAdd().addActionListener(this);
+    view.getMnuAdd().addActionListener(this);
+    view.getPmAdd().addActionListener(this);
   }
   
   public void registerCommands()
   {
     CommandOpen cmdOpen = new CommandOpen(view, model);
     CommandSave cmdSave = new CommandSave(view, model);
+    CommandDelete cmdDelete = new CommandDelete(view, model);
+    CommandAdd cmdAdd = new CommandAdd(view, model);
     
     invoker.addCommand(view.getMnuOpen(), cmdOpen);
     invoker.addCommand(view.getBtnOpen(), cmdOpen);
@@ -54,6 +66,14 @@ public class CommandController implements ActionListener
     invoker.addCommand(view.getMnuSave(), cmdSave);
     invoker.addCommand(view.getBtnSave(), cmdSave);
     invoker.addCommand(view.getPmSave(), cmdSave);
+    
+    invoker.addCommand(view.getBtnDelete(), cmdDelete);
+    invoker.addCommand(view.getMnuDelete(), cmdDelete);
+    invoker.addCommand(view.getPmDelete(), cmdDelete);
+    
+    invoker.addCommand(view.getBtnAdd(), cmdAdd);
+    invoker.addCommand(view.getMnuAdd(), cmdAdd);
+    invoker.addCommand(view.getPmAdd(), cmdAdd);
   }
 
   /**

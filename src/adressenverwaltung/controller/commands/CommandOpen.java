@@ -35,6 +35,7 @@ public class CommandOpen implements CommandInterface
   public void execute()
   {
     //Preferences
+    view.getFcDatei().setCurrentDirectory(new File(model.getLastFolder()));
     JFileChooser fc = view.getjFileChooser1();
     int choice = fc.showOpenDialog(view);
     
@@ -43,12 +44,12 @@ public class CommandOpen implements CommandInterface
       //model.getLastPath();
       File f = fc.getSelectedFile();
       view.getLblStatus().setText("File: " + f.getAbsolutePath());
-       
+      model.setLastFolder(f.getParent()); 
       
       try
       {
         model.datenLesen(f);
-        view.getTbleAdressenverwaltung().setModel(model);
+        //view.getTbleAdressenverwaltung().setModel(model);
         
       }
       catch (Exception ex)

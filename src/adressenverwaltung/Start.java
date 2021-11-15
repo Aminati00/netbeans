@@ -24,15 +24,18 @@ public class Start
   {
     AdressenverwaltungView view = new AdressenverwaltungView();
     AdressenverwaltungModel model = new AdressenverwaltungModel();
-
+    view.getTbleAdressenverwaltung().setModel(model);
     CommandInvoker invoker = new CommandInvoker();
     CommandController ctrlCommand = new CommandController(view, model, invoker);
-    UndoController ctrUndo = new UndoController(view, model);
+    UndoController ctrUndo = new UndoController(view, model, invoker);
     
     ctrlCommand.registerEvents();
     ctrlCommand.registerCommands();
     
     ctrUndo.registerEvents();
+    ctrUndo.registerCommands();
+    
+    
     view.setVisible(true);
   }
 

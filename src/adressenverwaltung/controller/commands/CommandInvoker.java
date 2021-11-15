@@ -7,6 +7,7 @@
 package adressenverwaltung.controller.commands;
 
 import java.util.HashMap;
+import java.util.Stack;
 
 /**
  *
@@ -15,10 +16,12 @@ import java.util.HashMap;
 public class CommandInvoker 
 {
   private HashMap<Object, CommandInterface> commands;
+  private Stack<CommandInterface> undoStack;
   
   public CommandInvoker()
   {
     commands = new HashMap<>();
+    undoStack = new Stack<>();
   }
   
   public void addCommand(Object key, CommandInterface value)
@@ -31,17 +34,21 @@ public class CommandInvoker
     commands.get(key).execute();
     if (commands.get(key).isUndoable())
     {
-      //undoStack.push(commands.get(key));
+      undoStack.push(commands.get(key));
     }
   }
   
   public void undoCommand()
   {
-//    if (!undoStack.empty())
-//    {
-//      undoStack.pop().undo();
-//    }
+    if (!undoStack.empty())
+    {
+      undoStack.pop().undo();
+    }
   }
   
+  public void clearUndoStack()
+  {
+    undoStack.clear();
+  }
   
 }

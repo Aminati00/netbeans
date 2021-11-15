@@ -29,8 +29,7 @@ public class AdressenverwaltungModel extends AbstractTableModel
   private ArrayList<String> adressEintraegeDaten;
   private ArrayList<String> adressEintraegeNamen;
   private Preferences p;
-  private static String LAST_USED_FOLDER;
-  private String path;
+  
           
   public AdressenverwaltungModel()
   {
@@ -42,6 +41,8 @@ public class AdressenverwaltungModel extends AbstractTableModel
     adressEintraegeNamen.add("Telefon");
     adressEintraegeDaten.add("122345");
     daten.add(adressEintraegeDaten);
+    
+    p = Preferences.userRoot().node(getClass().getName());
   }
 
   @Override
@@ -87,6 +88,13 @@ public class AdressenverwaltungModel extends AbstractTableModel
     this.fireTableDataChanged();
   }
   
+  public void eintragHinzufuegen(int row, ArrayList<String> adressEintraegeDaten)
+  {
+    adressEintraegeNamen.forEach(s -> adressEintraegeDaten.add(s));
+    daten.add(row, adressEintraegeDaten);
+    this.fireTableDataChanged();
+  }
+  
   public void eintragLoeschen(int row)
   {
     daten.remove(row);
@@ -128,4 +136,15 @@ public class AdressenverwaltungModel extends AbstractTableModel
 ////    return path;
 //  }
 //  
+
+  public String getLastFolder()
+  {
+    String lastFolder = p.get("lastFolder", System.getProperty("user.home"));
+    return lastFolder;
+  }
+  
+  public void setLastFolder(String lastFolder)
+  {
+    p.put("lastFolder", lastFolder);
+  }
 }

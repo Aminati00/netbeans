@@ -6,6 +6,8 @@
 
 package adressenverwaltung.controller;
 
+import adressenverwaltung.controller.commands.CommandInvoker;
+import adressenverwaltung.controller.commands.CommandUndo;
 import adressenverwaltung.model.AdressenverwaltungModel;
 import adressenverwaltung.view.AdressenverwaltungView;
 import java.awt.event.ActionEvent;
@@ -20,23 +22,35 @@ public class UndoController implements ActionListener
 {
   private AdressenverwaltungView view;
   private AdressenverwaltungModel model;
+  private CommandInvoker invoker;
   
-  public UndoController(AdressenverwaltungView view, AdressenverwaltungModel model)
+  public UndoController(AdressenverwaltungView view, AdressenverwaltungModel model, CommandInvoker invoker)
   {
     this.view = view;
     this.model = model;
+    this.invoker = invoker;
+    
+  }
+  
+  public void registerCommands()
+  {
+    CommandUndo cmdUndo = new CommandUndo(view, model);
+    
+    invoker.addCommand(view.getMnuUndo(), cmdUndo);
+    invoker.addCommand(view.getBtnUndo(), cmdUndo);
+    invoker.addCommand(view.getPmUndo(), cmdUndo);
   }
   
   public void registerEvents()
   {
-    view.getBtnSave().addActionListener(this);
-    view.getMnuSave().addActionListener(this);
-    //view.getPmSave().addActionListener(this);
+    view.getBtnUndo().addActionListener(this);
+    view.getMnuUndo().addActionListener(this);
+    view.getPmUndo().addActionListener(this);
   }
 
   @Override
   public void actionPerformed(ActionEvent evt)
   {
-//    view.getTaEdit().append("SAVE\n");
+    invoker.undoCommand();
   }
 }
