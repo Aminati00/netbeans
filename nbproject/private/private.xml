@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/C:/Users/marco/Documents/UNI/7.Semester/Praktika/INF3/INF3.2%20-%20Implementierung_von_Softwareapplikationen/Projekte/adressenverwaltung/src/adressenverwaltung/controller/commands/CommandOpen.java</file>
+            <file>file:/C:/Users/marco/Documents/UNI/7.Semester/Praktika/INF3/INF3.2%20-%20Implementierung_von_Softwareapplikationen/Projekte/adressenverwaltung/src/adressenverwaltung/controller/commands/CommandInterface.java</file>
+            <file>file:/C:/Users/marco/Documents/UNI/7.Semester/Praktika/INF3/INF3.2%20-%20Implementierung_von_Softwareapplikationen/Projekte/adressenverwaltung/src/adressenverwaltung/controller/commands/CommandUndo.java</file>
+            <file>file:/C:/Users/marco/Documents/UNI/7.Semester/Praktika/INF3/INF3.2%20-%20Implementierung_von_Softwareapplikationen/Projekte/adressenverwaltung/src/adressenverwaltung/Start.java</file>
+            <file>file:/C:/Users/marco/Documents/UNI/7.Semester/Praktika/INF3/INF3.2%20-%20Implementierung_von_Softwareapplikationen/Projekte/adressenverwaltung/src/adressenverwaltung/controller/CommandController.java</file>
+            <file>file:/C:/Users/marco/Documents/UNI/7.Semester/Praktika/INF3/INF3.2%20-%20Implementierung_von_Softwareapplikationen/Projekte/adressenverwaltung/src/adressenverwaltung/controller/UndoController.java</file>
+            <file>file:/C:/Users/marco/Documents/UNI/7.Semester/Praktika/INF3/INF3.2%20-%20Implementierung_von_Softwareapplikationen/Projekte/adressenverwaltung/src/adressenverwaltung/model/AdressenverwaltungModel.java</file>
+            <file>file:/C:/Users/marco/Documents/UNI/7.Semester/Praktika/INF3/INF3.2%20-%20Implementierung_von_Softwareapplikationen/Projekte/adressenverwaltung/src/adressenverwaltung/controller/commands/CommandDelete.java</file>
+            <file>file:/C:/Users/marco/Documents/UNI/7.Semester/Praktika/INF3/INF3.2%20-%20Implementierung_von_Softwareapplikationen/Projekte/adressenverwaltung/src/adressenverwaltung/view/icons/Save24.gif</file>
+            <file>file:/C:/Users/marco/Documents/UNI/7.Semester/Praktika/INF3/INF3.2%20-%20Implementierung_von_Softwareapplikationen/Projekte/adressenverwaltung/src/adressenverwaltung/view/AdressenverwaltungView.java</file>
+            <file>file:/C:/Users/marco/Documents/UNI/7.Semester/Praktika/INF3/INF3.2%20-%20Implementierung_von_Softwareapplikationen/Projekte/adressenverwaltung/src/adressenverwaltung/controller/commands/CommandInvoker.java</file>
+            <file>file:/C:/Users/marco/Documents/UNI/7.Semester/Praktika/INF3/INF3.2%20-%20Implementierung_von_Softwareapplikationen/Projekte/adressenverwaltung/src/adressenverwaltung/controller/commands/CommandAdd.java</file>
+            <file>file:/C:/Users/marco/Documents/UNI/7.Semester/Praktika/INF3/INF3.2%20-%20Implementierung_von_Softwareapplikationen/Projekte/adressenverwaltung/src/adressenverwaltung/controller/commands/CommandSave.java</file>
+        </group>
+    </open-files>
+</project-private>
